@@ -1,0 +1,78 @@
+<section id="nav-section" class="visible-lg visible-md">
+    <nav class="navbar navbar-custom navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="container"> <span class="business-phone pull-right">614-459-5848</span>
+                    <a href="#/"><img height="60" width="auto" src="/images/Dominic_icon.svg"></a>
+                    <div class="clearfix"></div>
+                    <ul class="list-inline inline-block text-center text-uppercase pull-right">
+                        <li style="margin-right:20px;"><a id="nav-section-home" tabindex="0" href="#">Home</a></li>
+                        <li style="margin-right:20px;"><a tabindex="1" href="#book-now">Book Now</a></li>
+                        <li style="margin-right:20px;"><a tabindex="2" href="#services">Services</a></li>
+                        <li style="margin-right:20px;"><a tabindex="3" href="#specialists">Specialists</a></li>
+                        <li><a tabindex="4" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<section id="nav-section-small" class="visible-sm">
+    <nav class="navbar navbar-custom navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="container"> <span class="business-phone pull-right">614-459-5848</span>
+                    <a href="#/"><img height="50" width="auto" src="/images/Dominic_icon.svg"></a>
+                    <!--div class="clearfix"></div-->
+                    <ul style="margin-top:-30px;" class="list-inline inline-block text-center text-uppercase pull-right">
+                        <li><a id="nav-section-home-sm" tabindex="0" href="#">Home</a></li>
+                        <li><a tabindex="1" href="#book-now">Book Now</a></li>
+                        <li><a tabindex="2" href="#services">Services</a></li>
+                        <li><a tabindex="3" href="#specialists">Specialists</a></li>
+                        <li><a tabindex="4" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section id="nav-section-mobile" class="visible-xs">
+    <nav class="navbar navbar-static-top navbar-custom navbar-default">
+        <div class="container-fluid">
+            <div style="margin-top:-15px;" class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar top-bar"></span>
+                    <span class="icon-bar middle-bar"></span>
+                    <span class="icon-bar bottom-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img height="44" width="auto" src="/images/Dominic_icon.svg"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="navbar-nav text-uppercase">
+                    <li><a class="undy" tabindex="0" href="#">Home</a><hr></li>
+                    <li><a tabindex="1" href="#book-now">Book Now</a><hr></li>
+                    <li><a tabindex="2" href="#services">Services</a><hr></li>
+                    <li><a tabindex="3" href="#specialists">Specialists</a><hr></li>
+                    <li><a tabindex="4" href="#contact">Contact</a><hr></li>
+                    <li id="nav-section-mobile-tel">614-459-5848</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<script>
+    $(document).ready(function () {
+        document.getElementById("nav-section-home").focus();
+        document.getElementById("nav-section-home-sm").focus();
+    });
+    
+    if ($(".navbar-toggle").is(":visible")) {
+        $("#myNavbar a").click(function () {            
+            $("#nav-section-mobile a").removeClass('undy');
+            $(this).addClass('undy');
+            $(".navbar-toggle").trigger("click");
+        })
+    }
+</script>

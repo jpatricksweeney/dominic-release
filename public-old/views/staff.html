@@ -1,0 +1,56 @@
+<!-- Staff Member Page -->
+<div id="staffdetail" class="container text-center marketing bg-grey" ng-controller="StaffController">
+    <h2 class="mySplash">Our Staff</h2>
+    
+    <div class="specialistSearch text-muted row ">
+        <div class="col-md-4 searchPad" >
+        <input class="form-control input-md" id="formGroupInputLarge" type="text" ng-model="query" placeholder="search by name, product or service" data-toggle="tooltip" data-placement="bottom" title='Search by name, service or product.  For example, "Amanda" or "hair stylist" or "Biolage"'>
+        </div>
+        
+        <label class="formgroup searchPad">Sort by 
+        <select ng-model="staffOrder">
+            <option value="firstname">Name</option>
+            <option value="title">Service</option>
+        </select>
+        </label>
+        
+        <label class="formgroup searchPad">
+            <input type="radio" ng-model="direction" name="direction" checked> ascending
+        </label>
+        <label class="formgroup">
+            <input type="radio" ng-model="direction" name="direction" value="reverse"> descending
+        </label>
+    </div>
+        
+    <div class="clearfix"></div>
+    <div class="row">
+        <div ng-repeat="staffmember in staffers | filter:query | filter: {profile:'on'} | orderBy: staffOrder:direction">
+         
+        <!-- TODO: adjust for screen breakpoints -->
+        <div class="clearfix" ng-if="$index % 3 == 0"></div>
+            
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="panel panel-default">
+                <div class="myPadding"><a href="#staffdetail/{{staffmember.regUID}}"><img ng-src="/images/default-profile-pic.png" class="img-responsive img-circle center-block"  id={{staffmember.regUID}} width='220' height='220'></a></div>
+                <h3>{{ staffmember.firstname }} {{ staffmember.lastname }}</h3>
+                <h4><span class="text-muted">{{ staffmember.title[0] }}</span></h4>
+                <h5><span class="glyphicon glyphicon-phone"></span>  {{staffmember.mobile}}</h5>
+                <h5><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{staffmember.email}}">{{staffmember.email}}</a></h5>
+                
+                <div class="btn-group" role="group" style="margin-top:8px; margin-bottom:10px;">
+                    <a href="#staffdetail/{{staffmember.regUID}}" class="btn btn-default">View Profile</a>
+                    <a ng-if="staffmember.square == 'on' && staffmember.squareID" href="https://squareup.com/appointments/book/{{staffmember.squareID}}" class="btn btn-default">Book Now</a>
+                    <a ng-if="staffmember.styleseat == 'on' && staffmember.styleseatID" href="https://www.styleseat.com/m/book/v/{{staffmember.styleseatID}}" class="btn btn-default">Book Now</a>
+                    <a ng-if="staffmember.onlineBooking == 'on'" href="#scheduler/{{staffmember.regUID}}" class="btn btn-default">Book Now</a>
+                </div>
+  
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>

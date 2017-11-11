@@ -1,0 +1,96 @@
+<!-- Specialists Page -->
+<div id="specialists" class="container" ng-controller="SpecialistsController">
+    <h1 class="header-style text-center text-uppercase">Our Beauty Specialists</h1>
+    <hr>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8">
+            <div>
+                <input class="form-control input-md" id="formGroupInputLarge" type="text" ng-model="query" placeholder="search by name, product or service" data-toggle="tooltip" data-placement="bottom"> 
+            </div>
+        </div>
+    </div>   
+
+    <section id="specialist-nav-section">
+    <nav class="navbar">
+        <div class="container">
+            <div class="row">
+                <ul class="list-inline inline-block text-center text-uppercase pull-left">
+                    <li><a id="all-specialists" tabindex="0" ng-click="query = ''" class="text-uppercase">All Specialists</a></li>
+                    <li><a tabindex="1" ng-click="query = 'hair'"class="text-uppercase">Hair</a></li>
+                    <li><a tabindex="2" ng-click="query = 'skin'" class="text-uppercase">Skin</a></li>
+                    <li><a tabindex="3" ng-click="query = 'makeup'" class="text-uppercase">Makeup</a></li>
+                    <li><a tabindex="4" ng-click="query = 'nail'" class="text-uppercase">Nails</a></li>
+                    <li><a tabindex="5" ng-click="query = 'massage'" class="text-uppercase">Massage</a></li>
+                    <li><a tabindex="6" ng-click="query = 'bridal'" class="text-uppercase">Bridal</a></li>
+                    <li><a tabindex="7" ng-click="query = 'teeth'" class="text-uppercase">Teeth</a></li>
+                    <li><a tabindex="8" ng-click="query = 'fitness'" class="text-uppercase">Fitness</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </section>     
+    
+    <div class="row">
+        <div ng-repeat="staffmember in staffers | filter:query | filter: {profile:'on'} | orderBy: staffOrder:ascending">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="specialist-container">
+                    <a href="#specialist-detail/{{staffmember.regUID}}">
+                        <div class="specialist-image-container">
+                            <img class="hidden-xs" ng-if="staffmember.picURL == undefined" ng-src="/images/dominic_profile.png" id={{staffmember.regUID}} width='370' height='370'>
+                            <img class="hidden-xs" ng-if="staffmember.picURL.length > 0" ng-src="{{staffmember.picURL}}" id={{staffmember.regUID}} width='370' height='370'>
+                            
+                            <img class="visible-xs" ng-if="staffmember.picURL == undefined" ng-src="/images/dominic_profile.png" id={{staffmember.regUID}} width='280' height='280'>
+                            <img class="visible-xs" ng-if="staffmember.picURL.length > 0" ng-src="{{staffmember.picURL}}" id={{staffmember.regUID}} width='280' height='280'>
+                            
+                            <div class="hidden-xs specialist-overlay">
+                                <div class="specialist-text text-uppercase">View Profile</div>
+                            </div>
+                            
+                            <div class="visible-xs specialist-overlay-xs">
+                                <div class="specialist-text text-uppercase">View Profile</div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="text-uppercase" id="specialist-name">{{staffmember.firstname}} {{staffmember.lastname}}</div>
+                    <div class="text-uppercase" id="specialist-title">{{staffmember.title[0]}}</div>
+                    <div id="specialist-call">Call {{staffmember.mobile}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="easy-book">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="hidden-sm hidden-xs col-xs-offset-2 col-sm-5 text-uppercase" style="letter-spacing:1.5px; margin-top:74px;"> It's really easy to book online! </div>
+            <div class="visible-sm visible-xs col-sm-12 text-center text-uppercase" style="letter-spacing:1.5px; margin-top:20px;"> It's really easy to book online! </div>
+            <div class="hidden-sm hidden-xs col-sm-4"><a href="#book-now"><button type="button" class="button text-uppercase btn btn-block" style="margin-top:58px;">book an appointment</button></a></div>
+            <div class="visible-sm visible-xs text-center"><a href="#book-now"><button type="button" class="button text-center text-uppercase btn" style="margin-top:18px;">book an appointment</button></a></div>
+        </div>
+    </div>
+</section>  
+
+<!-- Return to Top -->
+<a href="#" id="return-to-top"><i class="icon-chevron-up"></i></a>
+
+<script>    
+    // ===== Scroll to Top ==== 
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+            $('#return-to-top').fadeIn(200); // Fade in the arrow
+        }
+        else {
+            $('#return-to-top').fadeOut(200); // Else fade out the arrow
+        }
+    });
+    $('#return-to-top').click(function (e) { // When arrow is clicked
+        e.preventDefault();
+        $('body,html').animate({
+            scrollTop: 0 // Scroll to top of body
+        }, 500);
+    });
+</script>
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+

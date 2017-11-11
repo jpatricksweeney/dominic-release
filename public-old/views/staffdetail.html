@@ -1,0 +1,205 @@
+<!-- Staff Member Page -->
+<div class="container">
+    <div class="pull-right">
+        <a href="/#staff">&laquo; Back to Staff page</a>
+    </div>
+</div>
+
+<div id="staffdetail" ng-controller="StaffDetailController">
+    <div class="container marketing bg-grey" style="padding-bottom: 18px;">
+        <!-- Picture box -->
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h2 class="subliminal">{{staffmember.firstname}} {{staffmember.lastname}}</h2>
+                </div>
+                <div><img class="img-responsive center-block specialistPic" id={{staffmember.regUID}}></div>
+            </div>
+        </div>
+        
+        <!-- Contact -->
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h2 class="subliminal">Contact</h2>
+                </div>
+                <h1>{{ staffmember.firstname }} {{ staffmember.lastname }}</h1>
+                <span ng-if="staffmember.title" ng-repeat="myTitle in staffmember.title">
+                    <h4 style="font-size:1.2em; color: #ccc;"><span class="text-muted">{{ myTitle }}</span></h4>
+                </span>
+                <h4><span class="glyphicon glyphicon-phone"></span>  {{staffmember.mobile}}</h4>
+                <h4><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{val.email}}">{{staffmember.email}}</a></h4>
+                <div class="well" style="margin:40px; padding-bottom:40px;">
+                      
+                <div ng-if="staffmember.hours.Monday.work == 'on' || staffmember.hours.Tuesday.work == 'on' || staffmember.hours.Wednesday.work == 'on' || staffmember.hours.Thursday.work == 'on' || staffmember.hours.Friday.work == 'on' || staffmember.hours.Saturday.work == 'on' || staffmember.hours.Sunday.work == 'on'">
+                <h2>Hours</h2>
+                <div class="myHours" ng-if="staffmember.hours.Monday.work == 'on'">Monday:{{staffmember.hours.Monday.start}} - {{staffmember.hours.Monday.end}} </div>
+                <div class="myHours" ng-if="staffmember.hours.Tuesday.work == 'on'">Tuesday: {{staffmember.hours.Tuesday.start}} - {{staffmember.hours.Tuesday.end}} </div>
+                <div class="myHours" ng-if="staffmember.hours.Wednesday.work == 'on'">Wednesday: {{staffmember.hours.Wednesday.start}} - {{staffmember.hours.Wednesday.end}} </div>
+                <div class="myHours" ng-if="staffmember.hours.Thursday.work == 'on'">Thursday: {{staffmember.hours.Thursday.start}} - {{staffmember.hours.Thursday.end}} </div>
+                <div class="myHours" ng-if="staffmember.hours.Friday.work == 'on'">Friday: {{staffmember.hours.Friday.start}} - {{staffmember.hours.Friday.end}} </div>
+                <div class="myHours" ng-if="staffmember.hours.Saturday.work == 'on'">Saturday: {{staffmember.hours.Saturday.start}} - {{staffmember.hours.Saturday.end}} </div>
+                <div class="myHours" ng-if="staffmember.hours.Sunday.work == 'on'">Sunday: {{staffmember.hours.Sunday.start}} - {{staffmember.hours.Sunday.end}} </div>
+                </div>
+                </div>
+            </div>
+        </div>          
+          
+        <div class="clearfix"></div>
+        
+        <!-- About box -->
+        <div ng-if="staffmember.about" class="col-lg-6 col-md-6 col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="subliminal">About</h2>
+                </div>              
+                
+                <div class="text-muted" ng-bind-html=staffmember.about style=" height: 400px; overflow-y:scroll; margin:5px; font-size: 1.2em;">
+                </div> 
+            </div>
+        </div>
+              
+        
+        <div ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.makeup || staffmember.massage || staffmember.spa" class="col-lg-6 col-md-6 col-sm-6">
+            
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h2 class="subliminal">Services</h2>
+                </div>        
+        
+            <div class="text-muted tab-pane" style="text-align:left; height: 410px; overflow-y:scroll; font-size: .9em;"> 
+                <div ng-if="staffmember.hairCut">
+                    <h2 class="section-heading">Haircut &amp; Styling</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="hair in staffmember.hairCut" class="svrcStyle">
+                        <li>{{hair}}</li>
+                    </div>
+                    </ul>
+                </div>
+                <div ng-if="staffmember.hairColor">
+                    <h2 class="section-heading">Hair Color</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="color in staffmember.hairColor" class="svrcStyle">
+                        <li>{{color}}</li>    
+                    </div>
+                    </ul>
+                </div>
+                <div ng-if="staffmember.hairText">
+                    <h2 class="section-heading">Hair Texturizer</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="texturizer in staffmember.hairText" class="svrcStyle">
+                        <li>{{texturizer}}</li>    
+                    </div>
+                    </ul>
+                </div>
+                <div ng-if="staffmember.hairAddition">
+                    <h2 class="section-heading">Hair Enhancements</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="addon in staffmember.hairAddition" class="svrcStyle">
+                        <li>{{addon}}</li>    
+                    </div>
+                    </ul>            
+                </div>
+                <div ng-if="staffmember.mani">
+                    <h2 class="section-heading">Manicure</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="manicure in staffmember.mani" class="svrcStyle">
+                        <li>{{manicure}}</li>    
+                    </div>
+                    </ul>            
+                </div>     
+                <div ng-if="staffmember.pedi">
+                    <h2 class="section-heading">Pedicure</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="pedicure in staffmember.pedi" class="svrcStyle">
+                        <li>{{pedicure}}</li>    
+                    </div>
+                    </ul>            
+                </div>    
+                <div ng-if="staffmember.wax">
+                    <h2 class="section-heading">Wax</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="waxSrvc in staffmember.wax" class="svrcStyle">
+                        <li>{{waxSrvc}}</li>    
+                    </div>
+                    </ul>            
+                </div>
+                <div ng-if="staffmember.massage">
+                    <h2 class="section-heading">Massage</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="aMassage in staffmember.massage" class="svrcStyle">
+                        <li>{{aMassage}}</li>    
+                    </div>
+                    </ul>            
+                </div>
+                <div ng-if="staffmember.facial">
+                    <h2 class="section-heading">Facials</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="afacial in staffmember.facial" class="svrcStyle">
+                        <li>{{afacial}}</li>    
+                    </div>
+                    </ul>            
+                </div>
+                <div ng-if="staffmember.makeup">  <!-- Makeup Services -->
+                    <h2 class="section-heading">Makeup</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="amakeup in staffmember.makeup" class="svrcStyle">
+                        <li>{{amakeup}}</li>    
+                    </div>
+                    </ul>
+                </div>            
+                <div ng-if="staffmember.brow">  <!-- Eye Brow Services -->
+                    <h2 class="section-heading">Brows</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="abrow in staffmember.brow" class="svrcStyle">
+                        <li>{{abrow}}</li>    
+                    </div>
+                    </ul>
+                </div> 
+                
+                <!-- Products -->
+                <div ng-if="staffmember.products">
+                    <h2 class="section-heading">Products</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="product in staffmember.products" class="svrcStyle">
+                        <li>{{product}}</li>    
+                    </div>
+                    </ul>            
+                </div> 
+            </div> 
+                
+            </div>
+  
+        </div> <!-- ngif there are services -->
+        
+        <!-- Specials -->
+        <div class="clearfix">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div ng-if="staffmember.newClient == 'on' || staffmember.referral == 'on' || (staffmember.loyalty == 'on' && today <= loyaltyExpiration)">
+                    <h4>Current Specials!</h4>
+                    <div ng-if="staffmember.newClient == 'on'">
+                        <p>New Client Discount Special!<span ng-if="staffmember.ncdiscountPct" class="badge specialBadge">  {{staffmember.ncdiscountPct}}</span></p>
+                    </div>
+                    <div ng-if="staffmember.referral == 'on'">
+                        <p>Referral discount when you refer a friend or family member!<span ng-if="staffmember.refdiscountPct" class="badge specialBadge"> {{staffmember.refdiscountPct}}</span></p>
+                    </div>
+                    <div ng-if="staffmember.loyalty == 'on' && today <= loyaltyExpiration">
+                        <p>Now offering a loyalty discount!<span ng-if="staffmember.loyaldiscountPct" class="badge specialBadge"> {{staffmember.loyaldiscountPct}}</span></p>
+                    </div>
+                </div> 
+            </div>
+        </div>
+   
+        <!-- Book now button -->
+        <div class="buttonPad" ng-if="staffmember.square == 'on' && staffmember.squareID"><a href="https://squareup.com/appointments/book/{{staffmember.squareID}}" class="btn btn-primary btn-lg" role="button">Book Now</a></div>
+        
+        <div class="buttonPad" ng-if="staffmember.styleseat == 'on' && staffmember.styleseatID"><a href="https://www.styleseat.com/m/book/v/{{staffmember.styleseatID}}" class="btn btn-primary btn-lg" role="button">Book Now</a></div>
+        
+        <div class="buttonPad" ng-if="staffmember.onlineBooking == 'on'"><a href="#scheduler/{{staffmember.regUID}}" class="btn btn-primary btn-lg" role="button">Book Now</a></div>
+        
+  </div> <!-- Panel -->   
+    
+</div> <!-- StaffDetailController -->
+    
+
+

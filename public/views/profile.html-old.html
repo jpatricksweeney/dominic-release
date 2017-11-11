@@ -1,0 +1,2130 @@
+<div class="container" style="background-color: #ffffff" ng-controller="ProfileFormController">
+<form class="form-horizontal" id="servicesform" name="servicesform">
+            <fieldset>
+                <!-- Form Name -->
+                <legend>
+                    
+                    <div class="alert alert-info"> 
+                        <a class="close" data-dismiss="alert">×</a>Remember to save your updates with the <strong>Save My Profile</strong> button!
+                    </div> 
+                    <div><a href="#" ng-click="logout()">Log Out</a></div>
+                    
+                    <!-- Save My Profile button -->
+                    <div id="save-profile-button" style="text-align: center"><input id="btnSaveProfile" type="button" value="Save My Profile" class="btn btn-primary btn-lg"><p>Click the <strong>Save My Profile</strong> button to save your information to our database.</p></div>
+                    
+                    <div><a href="#admin" ng-if="admin == 'on'">administrator page</a></div>
+            
+                    <br>My Profile
+                    <div class="pull-right"><strong><span id="welcome-name">{{namefirst}} {{namelast}}</span></strong></div>
+                </legend>
+                <div class="container">
+                    <div style="text-align: center"><h2>Create and maintain your profile</h2></div>
+                    <div style="text-align: center"><span class="text-muted"><h4>Use the tabs below to create and update your personalized profile page</h4></span></div>
+                    <br>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" data-target='#home'>Home</a></li>
+                        <li><a data-toggle="tab" data-target='#menu1'>Hair</a></li>
+                        <li><a data-toggle="tab" data-target='#menu2'>Nails</a></li>
+                        <li><a data-toggle="tab" data-target='#menu3'>Wax</a></li>
+                        <li><a data-toggle="tab" data-target='#menu4'>Massage</a></li>
+                        <li><a data-toggle="tab" data-target='#menu5'>Facial</a></li>
+                        <li><a data-toggle="tab" data-target='#menu6'>Makeup</a></li>
+                        <li><a data-toggle="tab" data-target='#menu7'>Brow</a></li>
+                        <li><a data-toggle="tab" data-target='#menu8'>Gallery</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <br>
+                        <div id="home" class="tab-pane fade in active">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbActive">Activate Profile</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="toggle-0">
+                                            <input type="checkbox" name="pf_cbActive" id="pf_cbActive" value="on"> Check to display your profile on Dominic &amp; Company website.</label>
+                                    </div>
+                                </div>
+                            </div>                  
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" ng-model="firstname" for="first_name">First Name</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtFirstName" name="textinput" type="text" placeholder="First Name" class="form-control input-lg" required=""> </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="last_name">Last Name</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtLastName" name="last_name" type="text" placeholder="Last Name" class="form-control input-lg" required=""> </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="email_address">Email</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtEmail" name="email_address" type="email" placeholder="Email Address" class="form-control input-lg" required="" onchange="email_validate(this.value);">
+                                    <div class="status" id="status"> </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="web_site">Website</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtWebsite" name="pf_txtWebsite" type="text" placeholder="Website" class="form-control input-lg" required="">
+                                </div>
+                            </div>                            
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="facebook_url">Facebook URL</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtFacebookURL" name="pf_txtFacebookURL" type="text" placeholder="e.g. www.facebook.com/dominiconbethel" class="form-control input-lg" required="">
+                                </div>
+                            </div>
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="twitter_url">Twitter URL</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtTwitterURL" name="pf_txtTwitterURL" type="text" placeholder="e.g. www.twitter.com/dominiconbethel" class="form-control input-lg" required="">
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="instagram_url">Instagram URL</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtInstagramURL" name="pf_txtInstagramURL" type="text" placeholder="e.g. www.instagram.com/dominiconbethel" class="form-control input-lg" required="">
+                                </div>
+                            </div>
+ 
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="google_url">Google+ URL</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtGoogleURL" name="pf_txtGoogleURL" type="text" placeholder="Google URL" class="form-control input-lg" required="">
+                                </div>
+                            </div>
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="mobile_number">Mobile Number</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtMobile" name="pf_txtMobile" type="text" placeholder="xxx-xxx-xxxx" class="form-control input-lg" required="" onchange="phone_validate(this.value);">
+                                    <div class="mobile_status" id="mobile_status"></div>
+                                </div>
+                            </div>
+                            <!-- Title -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbMyTitle">Title</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="title-3">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Hair Stylist"> Hair Stylist </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-3">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Hair Stylist & Color Specialist"> Hair Stylist &amp; Color Specialist </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-5">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Nail Technician"> Nail Technician </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-6">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Massage Therapist"> Massage Therapist </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-4">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Makeup Artist"> Makeup 
+                                            Artist </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-4">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Makeup Artist & Aesthetician"> Makeup 
+                                            Artist &amp; Aesthetician </label>
+                                    </div>
+                                    
+                                    <div class="checkbox">
+                                        <label for="title-2">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Color Specialist"> Color Specialist </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-1">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Bridal Stylist"> Bridal Stylist </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-1">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Facials, Brows & Makeup"> Facials, Brows &amp; Makeup </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-1">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Personal Trainer"> Personal Trainer </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-1">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Fitness Trainer"> Fitness Trainer </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-1">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Teeth Whitening Specialist"> Teeth Whitening Specialist </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Title -->
+                            
+                            <!-- My Hours -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbMyHours">My Hours</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="title-3">
+                                            <input ng-model="checkedMonday" type="checkbox" name="pf_cMonday" id="pf_cbMonday" value="on"> Monday: 
+                                            <p id="myWorkHours" ng-hide="!checkedMonday">
+                                                <input id="pf_txtMondayStart" type="text" class="time start form-control input-md" value="8:00am"/> to
+                                                <input id="pf_txtMondayEnd" type="text" class="time end form-control input-md" value="5:00pm"/>
+                                            </p>
+
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-3">
+                                            <input ng-model="checkedTuesday"  type="checkbox" name="pf_cTuesday" id="pf_cbTuesday" value="on"> Tuesday: 
+                                            <p id="myWorkHours" ng-hide="!checkedTuesday">
+                                                <input id="pf_txtTuesdayStart" type="text" class="time start form-control input-md" value="8:00am"/> to
+                                                <input id="pf_txtTuesdayEnd" type="text" class="time end form-control input-md" value="5:00pm"/>
+                                            </p>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-3">
+                                            <input ng-model="checkedWednesday" type="checkbox" name="pf_cWednesday" id="pf_cbWednesday" value="on"> Wednesday: 
+                                            <p id="myWorkHours" ng-hide="!checkedWednesday">
+                                                <input id="pf_txtWednesdayStart" type="text" class="time start form-control input-md" value="8:00am"/> to
+                                                <input id="pf_txtWednesdayEnd" type="text" class="time end form-control input-md" value="5:00pm"/>
+                                            </p>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-3">
+                                            <input ng-model="checkedThursday" type="checkbox" name="pf_cThursday" id="pf_cbThursday" value="on"> Thursday: 
+                                            <p id="myWorkHours" ng-hide="!checkedThursday">
+                                                <input id="pf_txtThursdayStart" type="text" class="time start form-control input-md" value="8:00am"/> to
+                                                <input id="pf_txtThursdayEnd" type="text" class="time end form-control input-md" value="5:00pm"/>
+                                            </p>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-3">
+                                            <input ng-model="checkedFriday" type="checkbox" name="pf_cFriday" id="pf_cbFriday" value="on"> Friday: 
+                                            <p id="myWorkHours" ng-hide="!checkedFriday">
+                                                <input id="pf_txtFridayStart" type="text" class="time start form-control input-md" value="8:00am"/> to
+                                                <input id="pf_txtFridayEnd" type="text" class="time end form-control input-md" value="5:00pm"/>
+                                            </p>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-3">
+                                            <input ng-model="checkedSaturday" type="checkbox" name="pf_cSaturday" id="pf_cbSaturday" value="on"> Saturday: 
+                                            <p id="myWorkHours" ng-hide="!checkedSaturday">
+                                                <input id="pf_txtSaturdayStart" type="text" class="time start form-control input-md" value="10:00am"/> to
+                                                <input id="pf_txtSaturdayEnd" type="text" class="time end form-control input-md" value="4:00pm"/>
+                                            </p>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-3">
+                                            <input ng-model="checkedSunday" type="checkbox" name="pf_cSunday" id="pf_cbSunday" value="on"> Sunday: 
+                                            <p id="myWorkHours"ng-hide="!checkedSunday">
+                                                <input id="pf_txtSundayStart" type="text" class="time start form-control input-md" value="12:00am"/> to
+                                                <input id="pf_txtSundayEnd" type="text" class="time end form-control input-md" value="4:00pm"/>
+                                            </p>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="profile_picture">Upload Profile Picture</label>
+                                <div class="container">
+                                    <div class="col-md-4">
+                                        <div id="deleteProfilePicSuccess" class="alert alert-info hide">Your profile picture has been deleted.</div>
+                                        <div class="img-wrap"><input id="pf_txtProfilePic" name="pf_txtProfilePic" class="input-file" type="file" onchange="uploadProfilePicToGS(this);">
+                                        <span class="close">&times;</span><img class="img-responsive img-rounded center-block" src="/images/dominic_profile.png" id="pf_imgProfilePic" alt="Profile picture"></div></div>
+                                </div>
+                            </div>
+                            <!-- Textarea -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="about_info">About</label>
+                                <div class="col-md-4">
+                                    <textarea rows="20" cols="30" class="form-control" ui-tinymce="tinymceOptions" ng-model="tinymceModel">Enter you personal profile here. Include whatever you would like including specialties, training, years of experience, awards, accomplishments, contact information, scheduling preferences, etc.</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- home tab -->
+                        <div id="menu1" class="tab-pane fade">
+                            <!-- Hair tab -->
+                            <!-- Hair Coloring -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="pf_cbHairColor">Hair Color</label>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-0">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Color Retouch">Color Retouch</label>
+                                            </div>
+                                        </span>
+                                        <input id="color_retouch" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-1">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Weaving"> Weaving </label>
+                                            </div>
+                                        </span>
+                                        <input id="weaving" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Partial Weaving"> Partial Weaving </label>
+                                            </div>
+                                        </span>
+                                        <input id="partial_weaving" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Virgin Hair Color"> Virgin Hair Color </label>
+                                            </div>
+                                        </span>
+                                        <input id="virgin_hair_color" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>                                    
+                        
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Balayage"> Balayage </label>
+                                            </div>
+                                        </span>
+                                        <input id="balayage" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div> 
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Full Highlights"> Full Highlights </label>
+                                            </div>
+                                        </span>
+                                        <input id="full_highlights" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Face Framing Highlights"> Face Framing Highlights </label>
+                                            </div>
+                                        </span>
+                                        <input id="face_framing_highlights" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>                                    
+                                  
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="All Over Color"> All Over Color </label>
+                                            </div>
+                                        </span>
+                                        <input id="all_over_color" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Men's Color"> Men's Color </label>
+                                            </div>
+                                        </span>
+                                        <input id="mens_color" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="T-Line Part Only Touch Up"> T-Line Part Only Touch Up </label>
+                                            </div>
+                                        </span>
+                                        <input id="t_line_part_only_touch_up" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Ten Foil"> Ten Foil </label>
+                                            </div>
+                                        </span>
+                                        <input id="ten_foil" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Custom Color"> Custom Color </label>
+                                            </div>
+                                        </span>
+                                        <input id="custom_color" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                     <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Dimensional Highlights"> Dimensional Highlights </label>
+                                            </div>
+                                        </span>
+                                        <input id="dimensional_highlights" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>                                   
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Ombre"> Ombre </label>
+                                            </div>
+                                        </span>
+                                        <input id="ombre" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Eyebrow Tinting"> Eyebrow Tinting </label>
+                                            </div>
+                                        </span>
+                                        <input id="eyebrow_tinting" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Express Color"> Express Color </label>
+                                            </div>
+                                        </span>
+                                        <input id="express_color" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Corrective Color"> Corrective Color </label>
+                                            </div>
+                                        </span>
+                                        <input id="corrective_color" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Weave Slicing"> Weave Slicing </label>
+                                            </div>
+                                        </span>
+                                        <input id="weave_slicing" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Clear Shine Color Treatment"> Clear Shine Color Treatment </label>
+                                            </div>
+                                        </span>
+                                        <input id="clear_shine_color_treatment" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_color-2">
+                                                <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Color Enhancing Shine Treatment"> Color Enhancing Shine Treatment </label>
+                                            </div>
+                                        </span>
+                                        <input id="color_enhancing_shine_treatment" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>            
+                                </div>
+                            </div>
+                            <!-- Hair Coloring -->
+                            <!-- Hair Texturizing -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="pf_cbHairTexturizers">Hair Texturizers</label>
+                                <div class="col-md-6">
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="Body Wave"> Body Wave </label>
+                                            </div>
+                                        </span>
+                                        <input id="body_wave" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div> 
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="Permanent"> Permanent </label>
+                                            </div>
+                                        </span>
+                                        <input id="permanent" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div> 
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="Permanent Wave"> Permanent Wave </label>
+                                            </div>
+                                        </span>
+                                        <input id="permanent_wave" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="Keratin Treatment"> Keratin Treatment </label>
+                                            </div>
+                                        </span>
+                                        <input id="keratin_treatment" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="KeraFusion"> KeraFusion </label>
+                                            </div>
+                                        </span>
+                                        <input id="kerafusion" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="Relaxer"> Relaxer </label>
+                                            </div>
+                                        </span>
+                                        <input id="relaxer" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="Reverse Perm"> Reverse Perm </label>
+                                            </div>
+                                        </span>
+                                        <input id="reverse_perm" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="Natural Hair Straightening/Iron Work"> Natural Hair Straightening/Iron Work </label>
+                                            </div>
+                                        </span>
+                                        <input id="natural_hair_straightening_iron_work" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hair Texturizing -->
+                            <!-- Haircuts -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="pf_cbHairCuts">Haircuts</label>
+                                <div class="col-md-9">
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Women's Haircut & Style"> Women's Haircut &amp; Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="womens_haircut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Women's Haircut"> Women's Haircut </label>
+                                            </div>
+                                        </span>
+                                        <input id="womens_haircut" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Bang Trim"> Bang Trim </label>
+                                            </div>
+                                        </span>
+                                        <input id="bang_trim" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Shampoo Style"> Shampoo Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="shampoo_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Thermal Style"> Thermal Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="thermal_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Updo"> Updo </label>
+                                            </div>
+                                        </span>
+                                        <input id="updo" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Men's Haircut"> Men's Haircut </label>
+                                            </div>
+                                        </span>
+                                        <input id="mens_haircut" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Men's Haircut &amp; Style"> Men's Haircut &amp; Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="mens_haircut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Children's Haircut"> Children's Haircut </label>
+                                            </div>
+                                        </span>
+                                        <input id="childrens_haircut" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Children's Haircut &amp; Style"> Children's Haircut &amp; Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="childrens_haircut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Clipper Cut"> Clipper Cut </label>
+                                            </div>
+                                        </span>
+                                        <input id="clipper_cut" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Women's Precision Haircut"> Women's Precision Haircut </label>
+                                            </div>
+                                        </span>
+                                        <input id="womens_precision_haircut" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Light Dry Trim"> Light Dry Trim </label>
+                                            </div>
+                                        </span>
+                                        <input id="light_dry_trim" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Partial Highlights + Cut + Style"> Partial Highlights + Cut + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="partial_highlights_cut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Partial Highlights + Style"> Partial Highlights + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="partial_highlights_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Full Highlights + Cut + Style"> Full Highlights + Cut + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="full_highlights_cut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Full Highlights + Style"> Full Highlights + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="full_highlights_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                                                       
+                                     <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Color Retouch + Cut + Style"> Color Retouch + Cut + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="color_retouch_cut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>                                   
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Color Retouch + Style"> Color Retouch + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="color_retouch_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>         
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="All Over Color + Cut + Style"> All Over Color + Cut + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="all_over_color_cut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="All Over Color + Style"> All Over Color + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="all_over_color_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Glossing + Cut + Style"> Glossing + Cut + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="glossing_cut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                     
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Glossing + Style"> Glossing + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="glossing_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Balayage + Cut + Style"> Balayage + Cut + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="balayage_cut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Balayage + Style"> Balayage + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="balayage_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Face Framing Highlights + Cut + Style"> Face Framing Highlights + Cut + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="face_framing_highlights_cut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Face Framing Highlights + Style"> Face Framing Highlights + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="face_framing_highlights_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>                                 
+                                     
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Perm + Cut + Style"> Perm + Cut + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="perm_cut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>            
+                
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Perm + Style"> Perm + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="perm_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Relaxer Retouch"> Relaxer Retouch </label>
+                                            </div>
+                                        </span>
+                                        <input id="relaxer_retouch" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                                  
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Relaxer Retouch + Haircut"> Relaxer Retouch + Haircut </label>
+                                            </div>
+                                        </span>
+                                        <input id="relaxer_retouch_haircut" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Relaxer + Color"> Relaxer + Color </label>
+                                            </div>
+                                        </span>
+                                        <input id="relaxer_color" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Relaxer Retouch + Color + Cut"> Relaxer Retouch + Color + Cut </label>
+                                            </div>
+                                        </span>
+                                        <input id="relaxer_retouch_color_cut" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Lift And Tone"> Lift And Tone </label>
+                                            </div>
+                                        </span>
+                                        <input id="lift_and_tone" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                               
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Full Keratin + Cut + Style"> Full Keratin + Cut + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="full_keratin_cut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Express Color + Cut + Style"> Express Color + Cut + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="express_color_cut_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Fringe/Bang Trim"> Fringe/Bang Trim </label>
+                                            </div>
+                                        </span>
+                                        <input id="fringe_bang_trim" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Retouch Ombre"> Retouch Ombre </label>
+                                            </div>
+                                        </span>
+                                        <input id="retouch_ombre" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Partial Balayage + Haircut"> Partial Balayage + Haircut </label>
+                                            </div>
+                                        </span>
+                                        <input id="partial_balayage_haircut" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="OLAPLEX Add-in"> OLAPLEX Add-in </label>
+                                            </div>
+                                        </span>
+                                        <input id="olaplex_add_in" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="L'anza Ultimate Treatment"> L'anza Ultimate Treatment </label>
+                                            </div>
+                                        </span>
+                                        <input id="lanza_ultimate_treatment" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="L'anza Healing Service"> L'anza Healing Service </label>
+                                            </div>
+                                        </span>
+                                        <input id="lanza_healing_service" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Special Occasion Downstyle"> Special Occasion Downstyle </label>
+                                            </div>
+                                        </span>
+                                        <input id="special_occasion_downstyle" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                       
+                                     <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Special Occasion Upstyle"> Special Occasion Upstyle </label>
+                                            </div>
+                                        </span>
+                                        <input id="special_occasion_upstyle" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                     
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Shampoo, Blow dry + Style"> Shampoo, Blow dry + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="shampoo_blow_dry_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Shampoo, Wrap + Style"> Shampoo, Wrap + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="shampoo_wrap_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="hair_texturizers-0">
+                                                <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Dry Styling"> Dry Styling </label>
+                                            </div>
+                                        </span>
+                                        <input id="dry_styling" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div> 
+                                </div>
+                            </div>
+                            <!-- Haircuts -->
+                            <!-- Hair Additions -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="pf_cbHairAddition">Hair Additions</label>
+                                <div class="col-md-6">
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Hair Extension Consultation"> Hair Extension Consultation </label>
+                                            </div>
+                                        </span>
+                                        <input id="hair_extension_consultation" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div> 
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Extensions"> Extensions </label>
+                                            </div>
+                                        </span>
+                                        <input id="extensions" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div> 
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Couture Sew In"> Couture Sew In </label>
+                                            </div>
+                                        </span>
+                                        <input id="couture_sew_in" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div> 
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Braidless Sew In"> Braidless Sew In </label>
+                                            </div>
+                                        </span>
+                                        <input id="braidless_sew_in" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Couture Lace Wig Prep and Install"> Couture Lace Wig Prep and Install </label>
+                                            </div>
+                                        </span>
+                                        <input id="couture_lace_wig_prep_and_install" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Tightening + Style"> Tightening + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="tightening_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Removal + Style"> Removal + Style </label>
+                                            </div>
+                                        </span>
+                                        <input id="removal_style" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Hothead Hair Extensions"> Hothead Hair Extensions </label>
+                                            </div>
+                                        </span>
+                                        <input id="hothead_hair_extensions" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Integration"> Integration </label>
+                                            </div>
+                                        </span>
+                                        <input id="integration" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Tightening"> Tightening </label>
+                                            </div>
+                                        </span>
+                                        <input id="tightening" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>    
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Removal"> Removal </label>
+                                            </div>
+                                        </span>
+                                        <input id="removal" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Klix Extensions"> Klix Extensions </label>
+                                            </div>
+                                        </span>
+                                        <input id="klix_extensions" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Klix Extension Tightening"> Klix Extension Tightening </label>
+                                            </div>
+                                        </span>
+                                        <input id="klix_extension_tightening" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Colored Extension Accents"> Colored Extension Accents </label>
+                                            </div>
+                                        </span>
+                                        <input id="colored_extension_accents" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="addition-0">
+                                                <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Cinderella Hair Extensions"> Cinderella Hair Extensions </label>
+                                            </div>
+                                        </span>
+                                        <input id="cinderella_hair_extensions" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hair Additions -->
+                        </div>  <!-- Hair tab -->
+                        
+                        <div id="menu2" class="tab-pane fade">
+                            <!-- Manicures -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="pf_cbManicures">Manicures</label>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="manicures-0">
+                                                <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Shellac"> Shellac </label>
+                                            </div>
+                                        </span>
+                                        <input id="shellac" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="manicures-0">
+                                                <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Spa"> Spa </label>
+                                            </div>
+                                        </span>
+                                        <input id="spa" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="manicures-0">
+                                                <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Polish"> Polish </label>
+                                            </div>
+                                        </span>
+                                        <input id="polish" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="manicures-0">
+                                                <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Polish Change"> Polish Change </label>
+                                            </div>
+                                        </span>
+                                        <input id="polish_change" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="manicures-0">
+                                                <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Bevel + Polish Change"> Bevel + Polish Change </label>
+                                            </div>
+                                        </span>
+                                        <input id="bevel_polish_change" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="manicures-0">
+                                                <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Paraffin Treatment"> Paraffin Treatment </label>
+                                            </div>
+                                        </span>
+                                        <input id="paraffin_treatment" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="manicures-0">
+                                                <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="New Set Acrylic Pink & White"> New Set Acrylic Pink &amp; White </label>
+                                            </div>
+                                        </span>
+                                        <input id="new_set_acrylic_pink_white" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="manicures-0">
+                                                <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Pink & White Balance"> Pink &amp; White Balance </label>
+                                            </div>
+                                        </span>
+                                        <input id="pink_white_balance" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="manicures-0">
+                                                <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Balance"> Balance </label>
+                                            </div>
+                                        </span>
+                                        <input id="balance" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="manicures-0">
+                                                <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Nail Repair"> Nail Repair </label>
+                                            </div>
+                                        </span>
+                                        <input id="nail_repair" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div> 
+                                </div>
+                            </div>
+                            <!-- Manicures -->
+                            <!-- Pedicures -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="pf_cbPedicures">Pedicures</label>
+                                <div class="col-md-6">
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="pedicures-0">
+                                                <input type="checkbox" name="pf_cbPedicures" id="pf_cbPedicures" value="Pedicure Spa"> Pedicure Spa </label>
+                                            </div>
+                                        </span>
+                                        <input id="pedicure_spa" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="pedicures-0">
+                                                <input type="checkbox" name="pf_cbPedicures" id="pf_cbPedicures" value="Pedicure Special"> Pedicure Special </label>
+                                            </div>
+                                        </span>
+                                        <input id="pedicure_special" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Manicures -->
+                            <!-- Pedicures -->
+                        </div>
+                        <!-- wax tab -->
+                        <div id="menu3" class="tab-pane fade">
+                            <!--Wax -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="pf_cbWax">Wax</label>
+                                <div class="col-md-6">
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Brow Shaping/Wax"> Brow Shaping/Wax </label>
+                                            </div>
+                                        </span>
+                                        <input id="brow_shaping_wax" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Bikini Wax"> Bikini Wax </label>
+                                            </div>
+                                        </span>
+                                        <input id="bikini_wax" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Brazilian Bikini Wax"> Brazilian Bikini Wax </label>
+                                            </div>
+                                        </span>
+                                        <input id="brazilian_bikini_wax" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Full Leg Wax"> Full Leg Wax </label>
+                                            </div>
+                                        </span>
+                                        <input id="full_leg_wax" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Half Leg Wax"> Half Leg Wax </label>
+                                            </div>
+                                        </span>
+                                        <input id="half_leg_wax" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Back Wax"> Back Wax </label>
+                                            </div>
+                                        </span>
+                                        <input id="back_wax" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Underarms"> Underarms </label>
+                                            </div>
+                                        </span>
+                                        <input id="underarms" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Arms"> Arms </label>
+                                            </div>
+                                        </span>
+                                        <input id="arms" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Lip, Cheeks or Chin"> Lip, Cheeks or Chin </label>
+                                            </div>
+                                        </span>
+                                        <input id="lip_cheeks_or_chin" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Brow Wax"> Brow Wax </label>
+                                            </div>
+                                        </span>
+                                        <input id="brow_wax" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Brows"> Brows </label>
+                                            </div>
+                                        </span>
+                                        <input id="brows" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Lip Wax"> Lip Wax </label>
+                                            </div>
+                                        </span>
+                                        <input id="lip_wax" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Cheek Wax"> Cheek Wax </label>
+                                            </div>
+                                        </span>
+                                        <input id="cheek_wax" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Chin Wax"> Chin Wax </label>
+                                            </div>
+                                        </span>
+                                        <input id="chin_wax" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Brow Shaping and Lip Wax Combo"> Brow Shaping and Lip Wax Combo </label>
+                                            </div>
+                                        </span>
+                                        <input id="brow_shaping_and_lip_wax_combo" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Eyebrow Shaping"> Eyebrow Shaping </label>
+                                            </div>
+                                        </span>
+                                        <input id="eyebrow_shaping" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="waxing-0">
+                                                <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Ear Wax"> Ear Wax </label>
+                                            </div>
+                                        </span>
+                                        <input id="ear_wax" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Wax -->
+                        </div>
+                        <div id="menu4" class="tab-pane fade">
+                            <!--Wax -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="pf_cbMassage">Massage</label>
+                                <div class="col-md-6">
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="massage-0">
+                                                <input type="checkbox" name="pf_cbMassage" id="pf_cbMassage" value="Massage - 30 Minutes"> Massage - 30 Minutes </label>
+                                            </div>
+                                        </span>
+                                        <input id="massage_30_minutes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="massage-0">
+                                                <input type="checkbox" name="pf_cbMassage" id="pf_cbMassage" value="Massage - 60 Minutes"> Massage - 60 Minutes </label>
+                                            </div>
+                                        </span>
+                                        <input id="massage_60_minutes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="massage-0">
+                                                <input type="checkbox" name="pf_cbMassage" id="pf_cbMassage" value="Massage - 90 Minutes"> Massage - 90 Minutes </label>
+                                            </div>
+                                        </span>
+                                        <input id="massage_90_minutes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="massage-0">
+                                                <input type="checkbox" name="pf_cbMassage" id="pf_cbMassage" value="Massage - 120 Minutes"> Massage - 120 Minutes </label>
+                                            </div>
+                                        </span>
+                                        <input id="massage_120_minutes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="massage-0">
+                                                <input type="checkbox" name="pf_cbMassage" id="pf_cbMassage" value="Hot Stone - 30 Minutes"> Hot Stone - 30 Minutes </label>
+                                            </div>
+                                        </span>
+                                        <input id="hot_stone_30_minutes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="massage-0">
+                                                <input type="checkbox" name="pf_cbMassage" id="pf_cbMassage" value="Hot Stone - 60 Minutes"> Hot Stone - 60 Minutes </label>
+                                            </div>
+                                        </span>
+                                        <input id="hot_stone_60_minutes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="massage-0">
+                                                <input type="checkbox" name="pf_cbMassage" id="pf_cbMassage" value="Hot Stone - 90 Minutes"> Hot Stone - 90 Minutes </label>
+                                            </div>
+                                        </span>
+                                        <input id="hot_stone_90_minutes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="massage-0">
+                                                <input type="checkbox" name="pf_cbMassage" id="pf_cbMassage" value="Hot Stone - 120 Minutes"> Hot Stone - 120 Minutes </label>
+                                            </div>
+                                        </span>
+                                        <input id="hot_stone_120_minutes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="massage-0">
+                                                <input type="checkbox" name="pf_cbMassage" id="pf_cbMassage" value="Reflexology - 30 Minutes"> Reflexology - 30 Minutes </label>
+                                            </div>
+                                        </span>
+                                        <input id="reflexology_30_minutes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="massage-0">
+                                                <input type="checkbox" name="pf_cbMassage" id="pf_cbMassage" value="Reflexology - 60 Minutes"> Reflexology - 60 Minutes </label>
+                                            </div>
+                                        </span>
+                                        <input id="reflexology_60_minutes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Wax -->
+                        </div> 
+                        
+                        <div id="menu5" class="tab-pane fade">
+                            <!-- Facials -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="pf_cbFacial">Facials</label>
+                                <div class="col-md-6">
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Pomegranate Wintermint Facial"> Pomegranate Wintermint Facial </label>
+                                            </div>
+                                        </span>
+                                        <input id="pomegranate_wintermint_facial" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Lemon Zest Facial"> Lemon Zest Facial </label>
+                                            </div>
+                                        </span>
+                                        <input id="lemon_zest_facial" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Coconut Papaya Facial"> Coconut Papaya Facial </label>
+                                            </div>
+                                        </span>
+                                        <input id="coconut_papaya_facial" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Vitamin C Facial"> Vitamin C Facial </label>
+                                            </div>
+                                        </span>
+                                        <input id="vitamin_c_facial" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Oxygen Lift Facial"> Oxygen Lift Facial </label>
+                                            </div>
+                                        </span>
+                                        <input id="oxygen_lift_facial" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                   <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Almond Mineral Facial"> Almond Mineral Facial </label>
+                                            </div>
+                                        </span>
+                                        <input id="almond_mineral_facial" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                   
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Minty Relief"> Minty Relief </label>
+                                            </div>
+                                        </span>
+                                        <input id="minty_relief" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Eucalyptus Charcoal Back Treatment"> Eucalyptus Charcoal Back Treatment </label>
+                                            </div>
+                                        </span>
+                                        <input id="eucalyptus_charcoal_back_treatment" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Custom Facial"> Custom Facial </label>
+                                            </div>
+                                        </span>
+                                        <input id="custom_facial" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                      
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="The Royal Treatment"> The Royal Treatment </label>
+                                            </div>
+                                        </span>
+                                        <input id="the_royal_treatment" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>                              
+                                     
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Just Microderm"> Just Microderm </label>
+                                            </div>
+                                        </span>
+                                        <input id="just_microderm" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Just Dermaplaning"> Just Dermaplaning </label>
+                                            </div>
+                                        </span>
+                                        <input id="just_dermaplaning" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Signature Anti-aging treatment"> Signature Anti-aging treatment </label>
+                                            </div>
+                                        </span>
+                                        <input id="signature_anti_aging_treatment" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Dermaplaning"> Dermaplaning </label>
+                                            </div>
+                                        </span>
+                                        <input id="dermaplaning" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Ultrasonic Face Lift & Vitamin Infusion"> Ultrasonic Face Lift &amp; Vitamin Infusion </label>
+                                            </div>
+                                        </span>
+                                        <input id="ultrasonic_face_lift_vitamin_infusion" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Elite Skin Boosters"> Elite Skin Boosters </label>
+                                            </div>
+                                        </span>
+                                        <input id="elite_skin_boosters" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Echo 2 Oxygen Treatment"> Echo 2 Oxygen Treatment </label>
+                                            </div>
+                                        </span>
+                                        <input id="echo_2_oxygen_treatment" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Micro Diamond Abrasion"> Micro Diamond Abrasion </label>
+                                            </div>
+                                        </span>
+                                        <input id="micro_diamond_abrasion" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Activated Charcoal Clearing Facial for face or back"> Activated Charcoal Clearing Facial for face or back </label>
+                                            </div>
+                                        </span>
+                                        <input id="activated_charcoal_clearing_facial_for_face_or_back" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Teen Facial"> Teen Facial </label>
+                                            </div>
+                                        </span>
+                                        <input id="teen_facial" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="facial-0">
+                                                <input type="checkbox" name="pf_cbFacial" id="pf_cbFacial" value="Balancing Facial"> Balancing Facial </label>
+                                            </div>
+                                        </span>
+                                        <input id="balancing_facial" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Facial -->
+                        </div>                        
+                        
+                        <div id="menu6" class="tab-pane fade">
+                            <!-- Makeup -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="pf_cbMakeup">Makeup</label>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="makeup-0">
+                                                <input type="checkbox" name="pf_cbMakeup" id="pf_cbMakeup" value="Makeup Consultation"> Makeup Consultation </label>
+                                            </div>
+                                        </span>
+                                        <input id="makeup_consultation" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="makeup-0">
+                                                <input type="checkbox" name="pf_cbMakeup" id="pf_cbMakeup" value="Makeup Special Event"> Makeup Special Event </label>
+                                            </div>
+                                        </span>
+                                        <input id="makeup_special_event" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="makeup-0">
+                                                <input type="checkbox" name="pf_cbMakeup" id="pf_cbMakeup" value="Makeup Bridal"> Makeup Bridal </label>
+                                            </div>
+                                        </span>
+                                        <input id="makeup_bridal" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="makeup-0">
+                                                <input type="checkbox" name="pf_cbMakeup" id="pf_cbMakeup" value="Makeup Seasonal Color Analysis"> Makeup Seasonal Color Analysis </label>
+                                            </div>
+                                        </span>
+                                        <input id="makeup_seasonal_color_analysis" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="makeup-0">
+                                                <input type="checkbox" name="pf_cbMakeup" id="pf_cbMakeup" value="Makeup Application"> Makeup Application </label>
+                                            </div>
+                                        </span>
+                                        <input id="makeup_application" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="makeup-0">
+                                                <input type="checkbox" name="pf_cbMakeup" id="pf_cbMakeup" value="Makeup Application Lesson"> Makeup Application Lesson </label>
+                                            </div>
+                                        </span>
+                                        <input id="makeup_application_lesson" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="makeup-0">
+                                                <input type="checkbox" name="pf_cbMakeup" id="pf_cbMakeup" value="Makeup Application Lesson Airbrush"> Makeup Application Lesson Airbrushf </label>
+                                            </div>
+                                        </span>
+                                        <input id="makeup_application_lesson_airbrush" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>                                
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="makeup-0">
+                                                <input type="checkbox" name="pf_cbMakeup" id="pf_cbMakeup" value="Makeup Lesson/Bridal Trial Session"> Makeup Lesson/Bridal Trial Session </label>
+                                            </div>
+                                        </span>
+                                        <input id="makeup_lesson_bridal_trial_session" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div> 
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="makeup-0">
+                                                <input type="checkbox" name="pf_cbMakeup" id="pf_cbMakeup" value="On Location Makeup"> On Location Makeup </label>
+                                            </div>
+                                        </span>
+                                        <input id="on_location_makeup" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="makeup-0">
+                                                <input type="checkbox" name="pf_cbMakeup" id="pf_cbMakeup" value="Makeup Lashes"> Makeup Lashes </label>
+                                            </div>
+                                        </span>
+                                        <input id="makeup_lashes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Makeup Services -->
+                        </div>
+                    
+                        <div id="menu7" class="tab-pane fade">
+                            <!-- Brow -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="pf_cbMakeup">Brow</label>
+                                <div class="col-md-6">
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="brow-0">
+                                                <input type="checkbox" name="pf_cbBrow" id="pf_cbBrow" value="Eyelash Extensions"> Eyelash Extensions </label>
+                                            </div>
+                                        </span>
+                                        <input id="eyelash_extensions" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="brow-0">
+                                                <input type="checkbox" name="pf_cbBrow" id="pf_cbBrow" value="Lavish Lashes"> Lavish Lashes </label>
+                                            </div>
+                                        </span>
+                                        <input id="lavish_lashes" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="brow-0">
+                                                <input type="checkbox" name="pf_cbBrow" id="pf_cbBrow" value="Lash and Brow Tinting Duo"> Lash and Brow Tinting Duo </label>
+                                            </div>
+                                        </span>
+                                        <input id="lash_and_brow_tinting_duo" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="brow-0">
+                                                <input type="checkbox" name="pf_cbBrow" id="pf_cbBrow" value="Brow Shaping"> Brow Shaping </label>
+                                            </div>
+                                        </span>
+                                        <input id="brow_shaping" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="brow-0">
+                                                <input type="checkbox" name="pf_cbBrow" id="pf_cbBrow" value="Brow Tint and Shaping"> Brow Tint and Shaping </label>
+                                            </div>
+                                        </span>
+                                        <input id="brow_tint_and_shaping" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="brow-0">
+                                                <input type="checkbox" name="pf_cbBrow" id="pf_cbBrow" value="Brow Tint"> Brow Tint </label>
+                                            </div>
+                                        </span>
+                                        <input id="brow_tint" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div>
+                                    
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <div class="checkbox">
+                                            <label for="brow-0">
+                                                <input type="checkbox" name="pf_cbBrow" id="pf_cbBrow" value="Eye Lash Tint"> Eye Lash Tint </label>
+                                            </div>
+                                        </span>
+                                        <input id="eye_lash_tint" type="text" class="form-control input-lg" placeholder="optional pricing info" aria-label="Text input with checkbox">
+                                    </div> 
+                                </div>
+                            </div>
+                            <!-- Brow Services -->
+                        </div>    
+                        
+                        
+                        <div id="menu8" class="tab-pane fade">
+                            
+                        <!-- Add and delete Gallery image URLs -->
+                            <div class="container">
+                                <h2>Gallery URLs</h2>
+                                <p>Enter your gallery of client pictures below.  Pictures must be hosted online and accessible via a URL.  For example, to use a picture hosted on <a target="_blank" href="https://imgur.com">imgur</a>, enter <b>http://i.imgur.com/2jr1Wdh.jpg</b></p>
+                                <p><b>For best results, use pictures that have the same height and width (eg. 600 x 600).</b></p>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Action</th>
+                                                <th>URL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td><button type="button" class="btn btn-default btn-sm" ng-click="addGalleryURL(oneItem)">Add</button></td><td><input type="text" ng-model="oneItem.url" class="input-md" style="width:100%;" /></td>
+                                            </tr> 
+
+                                            <tr ng-repeat="gal in gallery">
+                                                <td><button type="button" class="btn btn-default btn-sm" ng-click="deleteGalleryURL(gal)">Delete</button></td>
+                                                <td>{{gal.url}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> 
+                        </div>                          
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        
+        <!-- Save My Profile button -->
+        <!--div id="save-profile-button" style="text-align: center"><input id="btnSaveProfile" type="button" value="Save My Profile" class="btn btn-primary btn-lg"><p>Click the <strong>Save My Profile</strong> button to save your information to our database.</p></div-->
+    
+
+    
+        
+    </div>  <!-- wrapper -->
+
+    <!-- Success Alert Modal.  Can be used to notify users of success (e.g. login, etc) -->
+    <div class="modal fade" id="modalProfileSave">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    <h4 class="modal-title"><span class="alerticon"><img src="images/check.png" alt="checkmark" /></span>    <span id="modalProfileSave-title">Success</span></h4> </div>
+                <div class="modal-body">
+                    <p><span id="modalProfileSave-body">Success</span></p>
+                </div>
+                <div class="modal-footer"> <span class="pull-left" id="modalProfileSave-footer"></span>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>  <!-- Success Modal -->
+
+    <!-- Delete Confirm Modal -->
+    <div class="modal fade" id="modalDeleteConfirm">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p><span id="modalSuccessAlert-body">Ok to delete?  The picture will be removed from your profile immediately by clicking Yes!</span></p>
+                </div>
+                <div class="modal-footer"> <span class="pull-left" id="modalDeleteConfirm-footer"></span>
+                    <button type="button" id="pf_modalYes" class="btn btn-warning btn-md" data-dismiss="modal" >Yes</button>
+                    <button type="button" class="btn btn-info btn-md" data-dismiss="modal">No</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>  <!-- Success Modal -->  
+
+  <script>
+  $( function() {
+   
+    $( "#pf_loyaltydp" ).datepicker();  
+      
+  });
+ </script>
+
+  <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+    });
+      
+  </script>
+
+<script>
+    $('#myWorkHours .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+</script>

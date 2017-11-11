@@ -1,0 +1,60 @@
+<div class="fullWidthBGColor">
+<div id="mainHeader" class="container"><!-- Page header -->
+    <div class="container">
+        <div class="row">
+            <!--div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 hidden-xs"> <img id="imgStylist" src="/images/banner.png"> </div-->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 pull-right"> <img style="padding-right:40px;" id="imgLogo"  src="/images/dominic_white.png"> </div>
+                <div><img id='xmasDecoration' height="140" width="378" class="pull-right hidden-xs" style="margin-top: -20px; margin-left: 300px" src="images/Christmas-holiday-clipart.png"></div>
+                <div><img id='newYearsDecoration' height="200" width="200" class="pull-right hidden-xs" style="margin-top: 100px; margin-left: 380px;" src="images/Happy New Year.png"></div>
+                
+                <!--div class="hidden-xs">
+                    <div class="pull-right" id="circle"></div>
+                    <div class="pull-right" id="circle" style="margin-right: -50px;"></div>
+                </div-->
+                <!--div class="myBanner hidden-xs">
+                    <br><br><br><br><br><p class="tagline"><strong>encompassing health &amp; beauty with excellence</strong></p>
+                </div-->
+                <!--div class="hidden-lg hidden-md hidden-sm tagline-sm"><strong>encompassing health &amp; beauty with excellence</strong></div-->
+                
+                <!--div style="margin-top:-50px;" class="visible-xs">
+                    <div class="pull-right" id="circle"></div>
+                    <div class="pull-right" id="circle" style="margin-right: -50px;"></div>
+                </div--> 
+            </div>
+        </div>
+    </div>
+</div><!-- Page header -->
+<img id='xmasDecoration2' height="140" width="378" class="pull-right visible-xs" style="margin-top: -60px;" src="images/Christmas-holiday-clipart.png">
+<div><img id='newYearsDecoration' height="180" width="180" class="pull-right visible-xs" style="margin-top: -60px;" src="images/Happy New Year.png"></div>
+</div>
+
+<!--div class="fullWidthBGColor">
+    <div class="container" style="background-color: white">
+        <div class="pull-right" id="circle"></div>
+        <div class="pull-right" id="circle" style="margin-right: -50px;"></div>
+       
+        <div class="container">
+            <div class="parallax"></div>
+        </div>
+    </div>
+</div-->
+
+
+<script>
+    var today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth() + 1;  // returns zero-based month so normalize
+
+    // Take down the xmas lights if the date does not fall within December 16th thru the 26th
+    if( !((month == 12) && (day > 22 && day < 26)) ) {
+        $('#xmasDecoration').remove();
+        $('#xmasDecoration2').remove();
+    }
+    
+    if( !((month == 1) && (day > 0 && day < 3)) ) {
+        $('#newYearsDecoration').remove();
+        $('#newYearsDecoration').remove();
+    }
+</script>
+

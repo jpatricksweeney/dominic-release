@@ -1,0 +1,235 @@
+<div class="navbar-wrapper"  ng-controller="RegistrationController">
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <!--a class="navbar-brand" href="#"><img alt="Brand" src="images/dominic_and_w.png"></a-->
+                    <a class="navbar-brand myBrand" href="#"><span id="myBrand">Salon and Spa</span></a>
+                </div>
+                <div id="myNavbar" class="navbar-collapse collapse">
+                    
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a id="close" href="#">Home</a></li>
+                        <li><a id="close" href="#about">About</a></li>
+                        <li><a id="close" href="#services">Services</a></li>
+                        <li><a id="close" href="#staff">Staff</a></li>
+                        <li ng-show="currentUser && isAssociate"><a href="#profile">My Profile</a></li>
+                        <li ng-show="currentUser && isAssociate"><a href="#bookings">My Bookings</a></li>
+                        <li ng-show="currentUser && isAdmin"><a href="#admin">Administrator</a></li>
+                        
+                        <!-- Drop-down nav item -->
+                        <ul id="login-dropdown" class="nav navbar-nav navbar-right" ng-hide="currentUser">
+                            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                                <ul id="login-dp" class="dropdown-menu">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12">                                         
+                                                <form class="form" name="myform" role="form" accept-charset="UTF-8" id="login-nav" ng-submit="login()" novalidate>
+                                                    <div class="form-group">
+                                                        <label class="sr-only">Email address</label>
+                                                        <input type="email" class="form-control" id="txtEmail" name="email" placeholder="Email address" ng-model="user.email" ng-required="true"><p class="error validationerror" ng-show="myform.email.$invalid && myform.email.$touched">Must be a valid email</p></div>
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                        <input type="password" class="form-control" id="txtPassword" name="password" placeholder="Password" ng-model="user.password" ng-required="true">
+                                                        <div class="help-block text-right"><a href="" role="button" data-toggle="modal" data-target="#myModalPasswordReset">Forgot password?</a></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button id="btnLogin" class="btn btn-primary btn-block" ng-disabled="myform.email.$invalid || myform.password.$invalid">Sign in</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="bottom text-center"> New here? <a href="" role="button" data-toggle="modal" data-target="#myModalRegistration"><b>Join Us</b></a> </div>
+                                            <div class="bottom text-center hide" id="login-error">Error</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Drop-down nav item -->
+                        <li id="logout-kicker"><a id="btnLogout" href="#" ng-show="currentUser" ng-click="logout()">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>  
+</div><!-- NAVBAR -->
+
+<!-- Password Reset Modal -->
+<div class="modal fade" id="myModalPasswordReset" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="RegistrationController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span> </button>
+                <h4 class="modal-title" id="myModalLabel">
+                        Password Reset
+                    </h4> </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="email" name="email" ng-model="user.email" ng-required="true" id="txtEmailReset" class="form-control input-sm" placeholder="Email Address"> </div>
+                    <input id="btnEmailReset" type="submit" ng-click="pwReset()" value="Send reset email" class="btn btn-info btn-block"> </form>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <div class="pull-left">We'll send you an email with a password reset link!</div>
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Close </button>
+            </div>
+        </div>
+    </div>
+</div>  
+
+<!-- Success Alert Modal.  Can be used to notify users of success (e.g. login, etc) -->
+<div class="modal fade" id="modalSuccessAlert">
+    <div id="modalSuccessAlert2" class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title"><span class="alerticon"><img src="images/check.png" alt="checkmark" /></span>    <span id="modalSuccessAlert-title">Success</span></h4> </div>
+            <div class="modal-body">
+                <p><span id="modalSuccessAlert-body">Success</span></p>
+            </div>
+            <div class="modal-footer"> <span class="pull-left" id="modalSuccessAlert-footer"></span>
+                <button id="pf_modalClose" type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- Logout Modal -->
+<div class="modal fade" id="modalLogout">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title"><span class="alerticon"><img src="images/check.png" alt="checkmark" /></span> Logout Successful <span id="modalSuccessAlert-title"></span></h4> </div>
+            <div class="modal-body">
+                <p><span id="modalSuccessAlert-body">Thank you and visit us again soon!</span></p>
+            </div>
+            <div class="modal-footer"> <span class="pull-left" id="modalSuccessAlert-footer"></span>
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- Fail Alert Modal.  Can be used to notify users of any type of failure (e.g. registration failed) -->
+<div class="modal fade" id="modalFailAlert">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title"><span class="alerticon"><img src="images/error.png" alt="checkmark" /></span>    <span id="modalFailAlert-title">Error</span></h4> </div>
+            <div class="modal-body">
+                <p><span id="modalFailAlert-body">Error</span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- Registration Modal -->
+<div class="modal fade" id="myModalRegistration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="RegistrationController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span> </button>
+                <h4 class="modal-title" id="myModalLabel">
+                        Register <small>it's free!</small>
+                    </h4> </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form role="form">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input type="text" name="first_name" ng-model="user.firstname" ng-required="true" id="first_name" class="form-control input-sm" placeholder="First Name"> </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input type="text" name="last_name" ng-model="user.lastname" ng-required="true" id="last_name" class="form-control input-sm" placeholder="Last Name"> </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" ng-model="user.email" ng-required="true" id="txtRegisterEmail" class="form-control input-sm" required type="text" placeholder="Email Address" required onchange="email_validate(this.value);">
+                        <div class="status" id="status"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input type="password" name="password" ng-model="user.password" ng-required="true" id="txtRegisterPassword" class="form-control input-sm inputpass" placeholder="Password" minlength="6" maxlength="16" required> </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input type="password" name="password_confirmation" ng-model="user.pwconfirm" ng-required="true" id="txtRegisterPasswordConfirmation" class="form-control input-sm inputpass" placeholder="Confirm Password" minlength="6" maxlength="16" required onkeyup="checkPass(); return false;"> <span id="confirmMessage" class="confirmMessage"></span></div>
+                        </div>
+                    </div>
+                    <input id="btnRegister" type="submit" ng-click="register()" value="Register" class="btn btn-info btn-block" disabled> </form>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Close </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    
+// validate email
+function email_validate(email)
+{
+var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+
+    if(regMail.test(email) == false)
+    {
+    document.getElementById("status").innerHTML    = "<span class='warning'>Email address is not valid yet.</span>";
+    }
+    else
+    {
+    document.getElementById("status").innerHTML	= "<span class='valid'>Thanks, you have entered a valid Email address!</span>";	
+    }
+}
+    
+// validate registration password against confirmation password
+function checkPass()
+{
+    //Store the password field objects into variables ...
+    var pass1 = document.getElementById('txtRegisterPassword');
+    var pass2 = document.getElementById('txtRegisterPasswordConfirmation');
+    //Store the Confimation Message Object ...
+    var message = document.getElementById('confirmMessage');
+    //Set the colors we will be using ...
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+    //Compare the values in the password field 
+    //and the confirmation field
+    if(pass1.value == pass2.value){
+        //The passwords match. 
+        //Set the color to the good color and inform
+        //the user that they have entered the correct password 
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "Passwords Match"
+        $('#btnRegister').removeClass('disabled');
+        $('#btnRegister').prop('disabled', false);
+    }else{
+        //The passwords do not match.
+        //Set the color to the bad color and
+        //notify the user.
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = "Passwords Do Not Match!"
+    }
+}
+</script>

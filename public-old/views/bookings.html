@@ -1,0 +1,53 @@
+<div class="container-fluid" style="background-color: #ffffff" ng-controller="BookingController">
+    
+    <div class="container">
+        <div style="text-align: center; background-color: #d56e2f; border-radius:5px;"><h1 style="color: #fff;">My Bookings</h1></div>
+        
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Appointment Date/Time</th>
+                        <th>Client</th>
+                        <th>Service</th>
+                        <th>Duration</th>
+                        <th>email</th>
+                        <th>Booked On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="appointment in appointments | orderBy: 'sortDate'">
+                        <td><button type="button" class="btn btn-default btn-sm" ng-click="deleteAppointment(appointment)">Delete</button></td>
+                        <td>{{appointment.date}}</td>
+                        <td>{{appointment.client}}</td>
+                        <td>{{appointment.service}}</td>
+                        <td>{{appointment.minutesToComplete}}</td>
+                        <td>{{appointment.email}}</td>
+                        <td>{{appointment.dateBooked}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+<!-- wrapper -->
+
+<!-- Delete Confirm Modal -->
+<div class="modal fade" id="modalBookingDeleteConfirm">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p><span id="modalBookingDeleteConfirm-body">Ok to delete appointment with <span id="theclientname"></span> on <span id="thebookdate"></span>?  The data will be <strong>permanently</strong> removed from the database by clicking Yes.</span></p>
+            </div>
+            <div class="modal-footer"> <span class="pull-left" id="modalBookingDeleteConfirm-footer"></span>
+                <button type="button" id="pf_modalBDYes" class="btn btn-warning btn-md" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-info btn-md" data-dismiss="modal">No</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Delete Confirm Modal -->

@@ -1,0 +1,575 @@
+<!-- Services Page -->
+<div id="services" ng-controller="ServicesController">
+    <h1 class="header-style text-center text-uppercase">Beauty &amp; Spa Services</h1>
+    
+    <!------------------------>
+    <!-- START HAIR SECTION -->
+    <!------------------------>
+    <section id="services-hair">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-uppercase">Hair</h1>
+                <hr>
+                <div class="hidden-xs col-lg-4 col-md-4 col-sm-4"><img style="margin-left:-14px;" class="img-responsive" src="/images/service_hair.png"></div>
+                <img class="visible-xs img-responsive center-block" src="/images/service_hair.png">
+                <div class="col-lg-8 col-md-8 col-sm-8"><p>Knowing where to the get the best haircut in Columbus can change everything.  From gorgeous short hairstyles and sexy layers for longer locks, to hot celebrity hairstyles: the Dominic &amp; Company stylists know how to bring out the best in your tresses.  With years of training and experience under their belt, as well as a keen appreciation for both timeless elegance and up-to-the-minute trends, the salon's hair styling specialists customize their services to suit every client's needs.</p></div>
+                
+                <a href="#specialists/hair" class="text-uppercase">View our hair specialists</a>
+            </div>
+            <div style="margin-bottom:60px;">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Cut &amp; Style</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'haircut' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span><span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>  
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Color</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'hair color' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span> <span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Additions</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'hair additions' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span> <span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Treatments</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'hairtext' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span> <span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    
+    <section ng-show='isHairSpecialist' id="services-hairstylists">
+        <div class="container-fluid services-jumbotron"> 
+            <div class="container">
+                <div class="row">
+                    <h3 class="text-uppercase">Hair Stylists</h3>
+                    <div style="margin-left:-8px;">
+                        <div ng-repeat="specialist in specialists | filter: {title: 'Hair Stylist & Color Specialist'} | filter: {profile: 'on'}">
+                                <div class="service-container">
+                                    <a href="#specialist-detail/{{specialist.regUID}}">
+                                        <div class="service-image-container">
+                                            <img ng-if="$index < 6 && specialist.picURL.length > 0" ng-src="{{specialist.picURL}}" id={{staffmember.regUID}} width='170' height='170'>
+                                            
+                                            <img ng-if="$index < 6 && specialist.picURL == undefined" ng-src="/images/dominic_profile.png" id={{staffmember.regUID}} width='170' height='170'>
+                                            
+                                            <div class="service-overlay">
+                                                <div class="service-text text-uppercase">{{specialist.firstname}} {{specialist.lastname}}</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+    </section>
+    <!-- END HAIR SECTION -->
+    
+    <!------------------------>
+    <!-- START NAIL SECTION -->
+    <!------------------------>
+    <section id="services-nail">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-uppercase">Nails</h1>
+                <hr>
+                <div class="hidden-xs col-lg-4 col-md-4 col-sm-4"><img style="margin-left:-14px;" class="img-responsive" src="/images/service_nails.png"></div>
+                <img class="visible-xs img-responsive center-block" src="/images/service_nails.png">
+                <div class="col-lg-8 col-md-8 col-sm-8"><p>Keep your hands looking and feeling amazing and your nails expressing your personality with polish, enhancements and maybe even some Rockstar Glitter Shellac at Dominic & Company. We strive to make your nails match your inner beauty by using the very best products to spoil you rotten. We look forward to exceed your expectations and needs. Thank you for trusting your nails to Dominic & Company where you are always in good hands.</p></div>
+                
+                <a href="#specialists/nails" class="text-uppercase">View our nail specialists</a>
+            </div>
+            <div style="margin-bottom:60px;">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Manicure</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'manicure' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span><span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>  
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Pedicure</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'pedicure' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span> <span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <section ng-show='isNailSpecialist' id="services-nail-techs">
+        <div class="container-fluid services-jumbotron">
+            <div class="container">
+                <div class="row">
+                    <h3 class="text-uppercase">Nail Specialists</h3>
+                    <div style="margin-left:-10px;">
+                        <div ng-repeat="specialist in specialists | filter: {title: 'Nail Technician'} | filter: {profile: 'on'}">
+                            <div class="service-container">
+                                <a href="#specialist-detail/{{specialist.regUID}}">
+                                <div class="service-image-container">
+                                    <img ng-if="$index < 6 && specialist.picURL.length > 0" ng-src="{{specialist.picURL}}" id={{staffmember.regUID}} width='170' height='170'>
+                                    
+                                    <img ng-if="$index < 6 && specialist.picURL == undefined" ng-src="/images/dominic_profile.png" id={{staffmember.regUID}} width='170' height='170'>
+                                    
+                                    <div class="service-overlay">
+                                        <div class="service-text text-uppercase">{{specialist.firstname}} {{specialist.lastname}}</div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- END NAIL SECTION -->
+    
+    
+    <!------------------------------->
+    <!-- START SKIN/MAKEUP SECTION -->
+    <!------------------------------->
+    <section id="services-makeup">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-uppercase">Skin &amp; Makeup</h1>
+                <hr>
+                <div class="hidden-xs col-lg-4 col-md-4 col-sm-4"><img style="margin-left:-14px;" class="img-responsive" src="/images/service_skin.png"></div>
+                <img class="visible-xs img-responsive center-block" src="/images/service_skin.png">
+                <div class="col-lg-8 col-md-8 col-sm-8"><p>Let the makeup artists at Dominic &amp; Co. help you find the perfect look to encompass your unique personality as well as your individual flair. From applications to lessons, to special occasion, our makeup artists put their experience and love of cosmetics to work, helping to highlight your most radiant you.</p></div>
+                
+                <a href="#specialists/makeup" class="text-uppercase">View our skin &amp; makeup specialists</a>
+            </div>
+            <div style="margin-bottom:60px;">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Skin</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'facial' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span><span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>  
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Makeup</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'makeup' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span> <span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <section ng-show='isMakeupSpecialist' id="services-makeup-skin">
+        <div class="container-fluid services-jumbotron">
+            <div class="container">
+                <div class="row">
+                    <h3 class="text-uppercase">Skin &amp; Makeup Specialists</h3>
+                    <div style="margin-left:-10px;">
+                        <div ng-repeat="specialist in specialists | filter: {title: 'Makeup'} | filter: {profile: 'on'}">
+                            <div class="service-container">
+                                <a href="#specialist-detail/{{specialist.regUID}}">
+                                <div class="service-image-container">
+                                    <img ng-if="$index < 6 && specialist.picURL.length > 0" ng-src="{{specialist.picURL}}" id={{staffmember.regUID}} width='170' height='170'>
+                                    
+                                    <img ng-if="$index < 6 && specialist.picURL == undefined" ng-src="/images/dominic_profile.png" id={{staffmember.regUID}} width='170' height='170'>
+                                    
+                                    <div class="service-overlay">
+                                        <div class="service-text text-uppercase">{{specialist.firstname}} {{specialist.lastname}}</div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- END SKIN/MAKEUP SECTION -->
+    
+    
+    <!--------------------------->
+    <!-- START MASSAGE SECTION -->
+    <!--------------------------->
+    <section id="services-massage">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-uppercase">Massage</h1>
+                <hr>
+                <div class="hidden-xs col-lg-4 col-md-4 col-sm-4"><img style="margin-left:-14px;" class="img-responsive" src="/images/service_massage.png"></div>
+                <img class="visible-xs img-responsive center-block" src="/images/service_massage.png">
+                <div class="col-lg-8 col-md-8 col-sm-8"><p>We believe health, wellness and beauty are intricately linked. From beginning to end, our dedicated spa teams ensure your journey enhances your well-being and enlivens your spirit.</p> 
+                <p>Dominic &amp; Co. offers a wide range of modern day services and treatments that are unique in concept. Your experience and our service are our number one priorities. Every facial, body treatment, and massage is designed to give you the ultimate relaxing experience. Every treatment is specially designed to heal and balance each client physically and emotionally. Our staff is professional, experienced, and all believe in making our clients feel welcome, comfortable, and special.</p></div>
+                
+                <a href="#specialists/massage" class="text-uppercase">View our massage specialists</a>
+            </div>
+            <div style="margin-bottom:60px;">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Massage</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'massage' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span><span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <section ng-show='isMassageSpecialist' id="services-massage-specialists">
+        <div class="container-fluid services-jumbotron">
+            <div class="container">
+                <div class="row">
+                    <h3 class="text-uppercase">Massage Specialists</h3>
+                    <div style="margin-left:-10px;">
+                        <div ng-repeat="specialist in specialists | filter: {title: 'Massage'} | filter: {profile: 'on'}">
+                            <div class="service-container">
+                                <div class="service-image-container">
+                                    <a href="#specialist-detail/{{specialist.regUID}}">
+                                        
+                                        <img ng-if="$index < 6 specialist.picURL.length > 0" ng-src="{{specialist.picURL}}" id={{staffmember.regUID}} width='170' height='170'></a>
+                                    
+                                        <img ng-if="$index < 6 && specialist.picURL == undefined" ng-src="/images/dominic_profile.png" id={{staffmember.regUID}} width='170' height='170'>
+                                    
+                                    <div class="service-overlay">
+                                        <div class="service-text text-uppercase">{{specialist.firstname}} {{specialist.lastname}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- END MASSAGE SECTION -->    
+        
+    <!-------------------------->
+    <!-- START BRIDAL SECTION -->
+    <!-------------------------->
+    <section id="services-bridal">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-uppercase">Bridal Services</h1>
+                <hr>
+                <div class="hidden-xs col-lg-4 col-md-4 col-sm-4"><img style="margin-left:-14px;" class="img-responsive" src="/images/service_bridal.png"></div>
+                <img class="visible-xs img-responsive center-block" src="/images/service_bridal.png">
+                <div class="col-lg-8 col-md-8 col-sm-8"><p>Dominic &amp; Company is Columbus, Ohio’s exclusive bridal hair and makeup team. Offering on site services as well as in salon services.  We specialize in wedding day hair and makeup, airbrush makeup, temporary lash extensions. Our talented styling team is recognized by Columbus’ elite photographers, event planners and venues. Our goal is to cater to you and your bridal party by offering a relaxing and luxurious environment while we style you pretty!  Your wedding day is important to us and we would love to be a part of your special day.</p></div>
+                
+                <a href="#specialists/bridal" class="text-uppercase">View our bridal specialists</a>
+            </div>
+            <div style="margin-bottom:60px;">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Bridal</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'bridal' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span> <span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <section ng-show='isBridalSpecialist' id="services-bridal-specialists">
+        <div class="container-fluid services-jumbotron">
+            <div class="container">
+                <div class="row">
+                    <h3 class="text-uppercase">Bridal Specialists</h3>
+                    <div style="margin-left:-10px;">
+                        <div ng-repeat="specialist in specialists | filter: {title: 'Bridal Stylist'} | filter: {profile: 'on'}">
+                            <div class="service-container">
+                                <a href="#specialist-detail/{{specialist.regUID}}">
+                                <div class="service-image-container">
+                                    <img ng-if="$index < 6 && specialist.picURL.length > 0" ng-src="{{specialist.picURL}}" id={{staffmember.regUID}} width='170' height='170'>
+                                    
+                                    <img ng-if="$index < 6 && specialist.picURL == undefined" ng-src="/images/dominic_profile.png" id={{staffmember.regUID}} width='170' height='170'>
+                                    
+                                    <div class="service-overlay">
+                                        <div class="service-text text-uppercase">{{specialist.firstname}} {{specialist.lastname}}</div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- END SPA SECTION -->    
+    
+    <!----------------------->
+    <!-- START SPA SECTION -->
+    <!----------------------->
+    <section id="services-spa">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-uppercase">Spa Services</h1>
+                <hr>
+                <div class="hidden-xs col-lg-4 col-md-4 col-sm-4"><img style="margin-left:-14px;" class="img-responsive" src="/images/service_spa.png"></div>
+                <img class="visible-xs img-responsive center-block" src="/images/service_spa.png">
+                <div class="col-lg-8 col-md-8 col-sm-8"><p>We believe health, wellness and beauty are intricately linked. From beginning to end, our dedicated spa teams ensure your journey enhances your well-being and enlivens your spirit.</p><p>Dominic & Co. offers a wide range of modern day services and treatments that are unique in concept. Your experience and our service are our number one priorities. Every facial, body treatment, and massage is designed to give you the ultimate relaxing experience. Every treatment is specially designed to heal and balance each client physically and emotionally. Our staff is professional, experienced, and all believe in making our clients feel welcome, comfortable, and special.</p></div>
+                
+                <a href="#specialists/makeup" class="text-uppercase">View our spa specialists</a>
+            </div>
+            <div style="margin-bottom:60px;">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Facial</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'facial' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span><span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>  
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Eyelash &amp; Brow</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'brow' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span><span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>  
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Wax</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'wax' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span><span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <section ng-show='isSpaSpecialist' id="services-spa-specialists">
+        <div class="container-fluid services-jumbotron">
+            <div class="container">
+                <div class="row">
+                    <h3 class="text-uppercase">Spa Specialists</h3>
+                    <div style="margin-left:-10px;">
+                        <div ng-repeat="specialist in specialists | filter:getSpaSpecialists(specialist)">
+                            <div class="service-container">
+                                <a href="#specialist-detail/{{specialist.regUID}}">
+                                <div class="service-image-container">
+                                    <img ng-if="$index < 6 && specialist.picURL.length > 0" ng-src="{{specialist.picURL}}" id={{staffmember.regUID}} width='170' height='170'>
+                                    
+                                    <img ng-if="$index < 6 && specialist.picURL == undefined" ng-src="/images/dominic_profile.png" id={{staffmember.regUID}} width='170' height='170'>
+                                    
+                                    <div class="service-overlay">
+                                        <div class="service-text text-uppercase">{{specialist.firstname}} {{specialist.lastname}}</div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- END SPA SECTION -->    
+    
+    
+    <!--------------------------->
+    <!-- START FITNESS SECTION -->
+    <!--------------------------->
+    <section id="services-fitness">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-uppercase">Fitness Services</h1>
+                <hr>
+                <div class="hidden-xs col-lg-4 col-md-4 col-sm-4"><img style="margin-left:-14px;" class="img-responsive" src="/images/service_fitness.png"></div>
+                <img class="visible-xs img-responsive center-block" src="/images/service_fitness.png">
+                <div class="col-lg-8 col-md-8 col-sm-8"><p>At Dominic &amp; Co. we believe health, wellness and beauty are intricately linked and for that reason we’ve incorporated Individual Personal Training or Group Training Programs offered by “Body by Greg”. </p></div>
+                
+                <a href="#specialists/fitness" class="text-uppercase">View our fitness experts</a>
+            </div>
+            <div style="margin-bottom:60px;">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="text-uppercase">Fitness</h2>
+                    <div class="mytabcontainer">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="service in services | filter: { category: 'fitness' }">
+                                <td><span class="mytabstyle pull-left text-uppercase">{{service.name}}</span><span class="mytabstyle pull-right">{{service.pricing}}</span></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>  
+                    </div>
+                </div>               
+            </div>
+            </div>
+        </div>
+    </section>
+    <section ng-show='isFitnessExpert' id="services-fitness-specialists">
+        <div class="container-fluid services-jumbotron">
+            <div class="container">
+                <div class="row">
+                    <h3 class="text-uppercase">Fitness Experts</h3>
+                    <div style="margin-left:-10px;">
+                        <div ng-repeat="specialist in specialists | filter:getFitnessExperts(specialist)">
+                            <div class="service-container">
+                                <a href="#specialist-detail/{{specialist.regUID}}">
+                                <div class="service-image-container">
+                                    <img ng-if="$index < 6 && specialist.picURL.length > 0" ng-src="{{specialist.picURL}}" id={{staffmember.regUID}} width='170' height='170'>
+                                    
+                                    <img ng-if="$index < 6 && specialist.picURL == undefined" ng-src="/images/dominic_profile.png" id={{staffmember.regUID}} width='170' height='170'>
+                                    
+                                    <div class="service-overlay">
+                                        <div class="service-text text-uppercase">{{specialist.firstname}} {{specialist.lastname}}</div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- END FITNESS SECTION -->      
+</div>
+
+<section id="easy-book">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="hidden-sm hidden-xs col-xs-offset-2 col-sm-5 text-uppercase" style="letter-spacing:1.5px; margin-top:74px;"> It's really easy to book online! </div>
+            <div class="visible-sm visible-xs col-sm-12 text-center text-uppercase" style="letter-spacing:1.5px; margin-top:20px;"> It's really easy to book online! </div>
+            <div class="hidden-sm hidden-xs col-sm-4"><a href="#book-now"><button type="button" class="button text-uppercase btn btn-block" style="margin-top:58px;">book an appointment</button></a></div>
+            <div class="visible-sm visible-xs text-center"><a href="#book-now"><button type="button" class="button text-center text-uppercase btn" style="margin-top:18px;">book an appointment</button></a></div>
+        </div>
+    </div>
+</section>  
+
+<!-- Return to Top -->
+<a href="#" id="return-to-top"><i class="icon-chevron-up"></i></a>
+
+<script>    
+    // ===== Scroll to Top ==== 
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+            $('#return-to-top').fadeIn(200); // Fade in the arrow
+        }
+        else {
+            $('#return-to-top').fadeOut(200); // Else fade out the arrow
+        }
+    });
+    $('#return-to-top').click(function (e) { // When arrow is clicked
+        e.preventDefault();
+        $('body,html').animate({
+            scrollTop: 0 // Scroll to top of body
+        }, 500);
+    });
+</script>
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">

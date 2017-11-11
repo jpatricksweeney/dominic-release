@@ -1,0 +1,258 @@
+<!-- Specialst Detail (Profile) Page -->
+<div id="specialist-detail" ng-controller="SpecialistDetailController">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="sd-back-button" class="pull-left text-uppercase"> <a href="/#specialists"><i style="display:inline-block;
+      vertical-align:-3px; font-size:24px;" class="fa fa-chevron-circle-left"></i> Back to Specialists</a></div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="specialist-detail-img" class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div><img ng-if="specialist.picURL == undefined" class="img-responsive center-block" ng-src="/images/dominic_profile.png" height='370' width='370'><img ng-if="specialist.picURL.length > 0" class="img-responsive center-block" ng-src={{specialist.picURL}} height='370' width='370'></div>
+            </div>
+            <div id="specialist-detail-personal-info" class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                <div id="specialist-name" class="text-uppercase">{{specialist.firstname}} {{specialist.lastname}}</div>
+                <div id="specialist-title" class="text-uppercase">{{specialist.title[0]}}</div>
+                <hr style="margin-top:1px;">
+                <div id="specialist-contact" class="text-uppercase">Contact</div>
+                <div id="specialist-telephone">{{specialist.mobile}}</div>
+                <div id="specialist-email-website">
+                    <div><a href="mailto:{{specialist.email}}">{{specialist.email}}</a></div>
+                    <div><a target="_blank" href="http://{{specialist.website}}">{{specialist.website}}</a></div>
+                </div>
+                <div>
+                    <a href="#book-now"><button type="button" class="button text-uppercase btn">book now</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="sd-pills" class="container">
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li ng-if="specialist.hairCut.length > 0 || specialist.hairColor.length > 0 || specialist.hairText.length > 0 || specialist.hairAddition.length > 0 || specialist.mani.length > 0 || specialist.pedi.length > 0 || specialist.makeup.length > 0 || specialist.massage.length > 0 || specialist.facial.length > 0 || specialist.wax.length > 0 || specialist.brow.length > 0 || specialist.fitness.length > 0" class="active"><a class="text-uppercase" data-toggle="tab" data-target="#featured-service">Featured Services</a></li>
+                <li><a ng-if="specialist.about.length > 0" class="text-uppercase" data-toggle="tab" data-target="#about-info">About</a></li>
+            </ul>
+            <div class="tab-content">
+                
+                <!-- FEATURED SERVICES TAB STARTS HERE -->
+                <div ng-if="specialist.hairCut.length > 0 || specialist.hairColor.length > 0 || specialist.hairText.length > 0 || specialist.hairAddition.length > 0 || specialist.mani.length > 0 || specialist.pedi.length > 0 || specialist.makeup.length > 0 || specialist.massage.length > 0 || specialist.facial.length > 0 || specialist.wax.length > 0 || specialist.brow.length > 0 || specialist.fitness.length > 0" id="featured-service" class="tab-pane fade in active">
+                    <div style="margin-bottom:60px;">
+                        <div class="row">
+                            <div ng-if="specialist.hairCut.length > 0 || specialist.hairColor.length > 0 || specialist.hairText.length > 0 || specialist.hairAddition.length > 0" class="col-lg-6">
+                                <h2 class="text-uppercase">Hair</h2>
+                                <div class="mytabcontainer">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr ng-repeat="ha in specialist.hairCut">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{ha}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(ha)}}</span></td>
+                                                </tr>
+                                                <tr ng-repeat="hc in specialist.hairColor">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{hc}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(hc)}}</span></td>
+                                                </tr>
+                                                <tr ng-repeat="ht in specialist.hairText">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{ht}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(ht)}}</span></td>
+                                                </tr>
+                                                <tr ng-repeat="had in specialist.hairAddition">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{had}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(had)}}</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="specialist.mani.length > 0" class="col-lg-6">
+                                <h2 class="text-uppercase">Manicure</h2>
+                                <div class="mytabcontainer">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr ng-repeat="mani in specialist.mani">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{mani}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(mani)}}</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="specialist.pedi.length > 0" class="col-lg-6">
+                                <h2 class="text-uppercase">Pedicure</h2>
+                                <div class="mytabcontainer">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr ng-repeat="pedi in specialist.pedi">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{pedi}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(pedi)}}</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="specialist.makeup.length > 0" class="col-lg-6">
+                                <h2 class="text-uppercase">Makeup</h2>
+                                <div class="mytabcontainer">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr ng-repeat="mu in specialist.makeup">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{mu}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(mu)}}</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="specialist.massage.length > 0" class="col-lg-6">
+                                <h2 class="text-uppercase">Massage</h2>
+                                <div class="mytabcontainer">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr ng-repeat="ma in specialist.massage">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{ma}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(ma)}}</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="specialist.makeup.length > 0" class="col-lg-6">
+                                <h2 class="text-uppercase">Bridal</h2>
+                                <div class="mytabcontainer">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr ng-repeat="ma in specialist.makeup">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{ma}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(ma)}}</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="specialist.facial.length > 0 || specialist.wax.length > 0 || specialist.brow.length > 0" class="col-lg-6">
+                                <h2 class="text-uppercase">Spa</h2>
+                                <div class="mytabcontainer">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr ng-repeat="fa in specialist.facial">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{fa}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(fa)}}</span></td>
+                                                </tr>
+                                                <tr ng-repeat="wa in specialist.wax">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{wa}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(wa)}}</span></td>
+                                                </tr>
+                                                <tr ng-repeat="br in specialist.brow">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{br}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(br)}}</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="specialist.fitness.length > 0" class="col-lg-6">
+                                <h2 class="text-uppercase">Fitness</h2>
+                                <div class="mytabcontainer">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr ng-repeat="fi in specialist.fitness">
+                                                    <td><span class="mytabstyle pull-left text-uppercase">{{fi}}</span></td>
+                                                    <td><span class="mytabstyle pull-right text-uppercase">{{lookupPriceInfo(fi)}}</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ABOUT TAB STARTS HERE -->
+                <div ng-if="specialist.about.length > 0" id="about-info" class="tab-pane fade"> 
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div ng-bind-html=specialist.about></div>
+                            </div>
+                            <div class="col-lg-4">
+                                <img style="margin-left:14px;" class="img-responsive" src="/images/spoil_yourself_block.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid gallery-jumbotron">
+        <div class="container">
+            <div class="row">
+                <div ng-if="gallery.length > 0" id="gallery-name" class="text-center text-uppercase">{{specialist.firstname}}'s Gallery</div>
+                <div id="gallery-icons" class="text-center">
+                    <a ng-if="specialist.twitterURL != undefined && specialist.twitterURL.length > 0" target="_blank" href="{{specialist.twitterURL}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a ng-if="specialist.facebookURL != undefined && specialist.facebookURL.length > 0" target="_blank" href="{{specialist.facebookURL}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a ng-if="specialist.instagramURL != undefined && specialist.instagramURL.length > 0" target="_blank" href="{{specialist.instagramURL}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a ng-if="specialist.googleURL != undefined && specialist.googleURL.length > 0" target="_blank" href="{{specialist.googleURL}}"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                </div>
+                <div id="gallery-pics">
+                    <!-- original pic dimensions were 628x418 and 163x216 -->
+                    <a ng-repeat="pic in gallery" href="{{pic.url}}" data-width="600" data-height="600" data-fancybox="group" data-caption=""><img src="{{pic.url}}" height="200" width="200" alt="" /></a>
+                </div>
+                <div id="sd-back-button" class="text-center text-uppercase"> <a href="/#specialists"><i style="display:inline-block;
+  vertical-align:-3px; font-size:24px;" class="fa fa-chevron-circle-left" style=""></i> Back to Specialists</a></div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<section id="easy-book">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="hidden-sm hidden-xs col-xs-offset-2 col-sm-5 text-uppercase" style="letter-spacing:1.5px; margin-top:74px;"> It's really easy to book online! </div>
+            <div class="visible-sm visible-xs col-sm-12 text-center text-uppercase" style="letter-spacing:1.5px; margin-top:20px;"> It's really easy to book online! </div>
+            <div class="hidden-sm hidden-xs col-sm-4"><a href="#book-now"><button type="button" class="button text-uppercase btn btn-block" style="margin-top:58px;">book an appointment</button></a></div>
+            <div class="visible-sm visible-xs text-center"><a href="#book-now"><button type="button" class="button text-center text-uppercase btn" style="margin-top:18px;">book an appointment</button></a></div>
+        </div>
+    </div>
+</section>  
+
+<!-- Specialist Detail (Profile) controller -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+<!-- Return to Top -->
+<a href="#" id="return-to-top"><i class="icon-chevron-up"></i></a>
+
+<script>    
+    // ===== Scroll to Top ==== 
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+            $('#return-to-top').fadeIn(200); // Fade in the arrow
+        }
+        else {
+            $('#return-to-top').fadeOut(200); // Else fade out the arrow
+        }
+    });
+    $('#return-to-top').click(function (e) { // When arrow is clicked
+        e.preventDefault();
+        $('body,html').animate({
+            scrollTop: 0 // Scroll to top of body
+        }, 500);
+    });
+</script>
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
